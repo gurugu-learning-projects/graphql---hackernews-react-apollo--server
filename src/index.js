@@ -10,7 +10,8 @@ type Query {
 // 2
 const resolvers = {
   Query: {
-    info: () => `This is the API of a Hackernews Clone`
+    // info: () => `This is the API of a Hackernews Clone`
+    info: () => null
   }
 };
 
