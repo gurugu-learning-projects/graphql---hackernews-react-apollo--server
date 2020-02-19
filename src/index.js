@@ -7,6 +7,7 @@ let links = [
     description: "Fullstack tutorial for GraphQL"
   }
 ];
+let idCount = links.length;
 
 // 2
 const resolvers = {
@@ -14,10 +15,17 @@ const resolvers = {
     info: () => `This is the API of a Hackernews Clone`,
     feed: () => links
   },
-  Link: {
-    id: parent => parent.id,
-    description: parent => parent.description,
-    url: parent => parent.url
+  Mutation: {
+    post: (parent, args) => {
+      const link = {
+        id: `link-${idCount++}`,
+        description: args.description,
+        url: args.url
+      };
+
+      links.push(link);
+      return link;
+    }
   }
 };
 
