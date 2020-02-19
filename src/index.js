@@ -8,24 +8,6 @@ let links = [
   }
 ];
 
-// 1
-const typeDefs = `
-type Query {
-  info: String!
-  feed: [Link!]!
-}
-
-type Mutation {
-  post(url: String!, description: String!): Link!
-}
-
-type Link {
-  id: ID!
-  description: String!
-  url: String!
-}
-`;
-
 // 2
 const resolvers = {
   Query: {
@@ -41,7 +23,7 @@ const resolvers = {
 
 // 3
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: "./src/schema.graphql",
   resolvers
 });
 
