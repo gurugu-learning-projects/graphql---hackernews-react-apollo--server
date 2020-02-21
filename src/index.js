@@ -30,6 +30,23 @@ const resolvers = {
 
       links.push(link);
       return link;
+    },
+    updateLink: (parent, args) => {
+      const { id, description, url } = args;
+
+      links = links.map(link => {
+        if (link.id === id) {
+          return {
+            id: link.id,
+            description: description ? description : link.description,
+            url: url ? url : link.url
+          };
+        } else {
+          return link;
+        }
+      });
+
+      return links.find(link => link.id === id);
     }
   }
 };
