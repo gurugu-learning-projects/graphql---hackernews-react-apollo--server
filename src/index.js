@@ -47,6 +47,14 @@ const resolvers = {
       });
 
       return links.find(link => link.id === id);
+    },
+    deleteLink: (parent, args) => {
+      const { id } = args;
+
+      const deletedLink = links.find(link => link.id === id);
+      links = links.filter(link => link.id !== id);
+
+      return deletedLink;
     }
   }
 };
