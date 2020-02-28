@@ -28,6 +28,7 @@ type User {
   name: String!
   email: String!
   links: [Link!]!
+  votes: [Vote!]!
 }
 
 type Vote {
@@ -38,4 +39,5 @@ type Vote {
 
 type Subscription {
   newLink: Link
+  newVote: Vote
 }
