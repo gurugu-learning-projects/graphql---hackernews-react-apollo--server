@@ -1,4 +1,4 @@
-function feed(parent, args, context, info) {
+async function feed(parent, args, context, info) {
   const where = args.filter
     ? {
         OR: [
@@ -8,7 +8,11 @@ function feed(parent, args, context, info) {
       }
     : {};
 
-  const links = await context.prisma.links({where})
+  const links = await context.prisma.links({
+    where,
+    skip: args.where,
+    first: args.first
+  });
 
   return links;
 }
