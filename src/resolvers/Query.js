@@ -11,7 +11,8 @@ async function feed(parent, args, context, info) {
   const links = await context.prisma.links({
     where,
     skip: args.where,
-    first: args.first
+    first: args.first,
+    orderBy: args.orderBy
   });
 
   return links;
